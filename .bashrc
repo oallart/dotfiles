@@ -38,7 +38,7 @@ __prompt_command() {
     local NORM_GREEN='\[\033[0;32m\]'
     # test with
     #PS1="something ${LIGHT_BLUE}Blue ${CLR_PLAIN}${NORM_BLUE}Blue ${NORM_YELLOW}Yellow ${NORM_PURPLE}purple ${TEST}what ${NORM_RED}red ${NORM_GREEN}green ${CLR_PLAIN} ~ "
-    
+
     if [ $USER == root ]; then
         CURRUSER="${BOLD_RED}\u${CLR_PLAIN}"
     PROMPTCHAR="${BOLD_RED}# ${CLR_PLAIN}"
@@ -65,7 +65,7 @@ __prompt_command() {
     PS1+="$EXIT"             # return code, green if 0, red otherwise
     PS1+="${LIGHT_BLUE}]"    # ]
     PS1+="${WHITE} \w"       # current work dir
-#    PS1+="${YELLOW}$(parse_git_branch)" # Git Branch if applicable
+    PS1+="${YELLOW}$(parse_git_branch)" # Git Branch if applicable
     PS1+=" ${PROMPTCHAR}" # closing prompt char
 
     # old one 
@@ -77,6 +77,7 @@ __prompt_command() {
 }
 
 
+# General aliases
 alias v='vi'
 alias vi='vim'
 alias l='ls -l'
@@ -86,9 +87,28 @@ alias c='cat'
 alias h='head'
 alias t='tail'
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias vf='vim -o $(find . -type f)'↲
-alias fv=vf↲
-alias vo=vf↲
+alias vf='vim -o $(find . -type f)'
+alias fv=vf
+alias vo=vf
+# Git
+alias g=git
+alias gs='git status'
+alias gp='git push'
+alias gca='git commit -a'
+alias gcam='git commit --amend'
+alias gcm='git commit --amend'
+alias gc='git commit'
+alias gd='git diff'
+alias ga='git add'
+alias gb='git branch'
+#alias gch='git checkout'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gf='git fetch'
+alias gr='git rebase'
+alias gra='git rebase --autostash'
+alias t=tig
+
 
 # neat title in the bar
 echo -ne "\033]0;${USER}@$(hostname -s)\007"
@@ -98,4 +118,3 @@ export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
-
