@@ -91,11 +91,14 @@ alias vf='vim -o $(find . -type f)'
 alias fv=vf
 alias vo=vf
 # Git
+<<<<<<< HEAD
 source ~/git-completion.bash 2>/dev/null
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+=======
+>>>>>>> bc99c9bef8230b4ff07edf0ea3698eb0b820200c
 alias g=git
 alias gs='git status'
 alias gp='git push'
